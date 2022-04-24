@@ -71,4 +71,3 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin make -j$(($(np
 ```
 
 
-![wechat](doc/wechat_donate.jpg)
