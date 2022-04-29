@@ -2,6 +2,10 @@
 =
 
 [English](./README_EN.md)
+源码地址
+https://github.com/coolsnowwolf/lede
+
+本fork为删除小米支持前的代码，一般只进行软件更新
 
 如何编译自己需要的 OpenWrt 固件
 -
