@@ -16,7 +16,7 @@ DEFAULT_PACKAGES += \
 	kmod-leds-gpio kmod-gpio-button-hotplug \
 	ath11k-firmware-ipq8074 kmod-ath11k-ahb \
 	autocore-arm htop wpad-openssl zram-swap uboot-envtools \
-	kmod-qca-nss-dp kmod-qca-nss-drv-64 kmod-qca-nss-drv-bridge-mgr \
-	kmod-qca-nss-drv-pppoe-64  \
+	kmod-qca-nss-dp kmod-qca-nss-drv-64 kmod-qca-nss-drv-pppoe-64 \
+
 
 $(eval $(call BuildTarget))
