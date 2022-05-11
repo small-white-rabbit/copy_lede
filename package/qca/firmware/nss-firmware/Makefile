@@ -22,7 +22,7 @@ PKG_MAINTAINER:=Robert Marko <robimarko@gmail.com>
 
 include $(INCLUDE_DIR)/package.mk
 
-VERSION_PATH=$(PKG_BUILD_DIR)/QCA_Networking_2020.SPF_11.3/CS
+VERSION_PATH=$(PKG_BUILD_DIR)/QCA_Networking.SPF_11.5.0/CS
 
 define Package/nss-firmware-default
   SECTION:=firmware
@@ -34,13 +34,13 @@ endef
 define Package/nss-firmware-ipq6018
 $(Package/nss-firmware-default)
   TITLE:=NSS firmware for IPQ6018 devices
-  NSS_ARCHIVE:=$(VERSION_PATH)/IPQ6018.ATH.11.3/BIN-NSS.CP.11.3-9-R.tar.bz2
+NSS_ARCHIVE:=$(VERSION_PATH)/IPQ6018.ATH.11.5.0/BIN-NSS.FW.12.0.r1-002-CP.R.tar.bz2
 endef
 
 define Package/nss-firmware-ipq8074
 $(Package/nss-firmware-default)
   TITLE:=NSS firmware for IPQ8074 devices
-  NSS_ARCHIVE:=$(VERSION_PATH)/IPQ8074.ATH.11.3/BIN-NSS.HK.11.3-9-R.tar.bz2
+  NSS_ARCHIVE:=$(VERSION_PATH)/IPQ8074.ATH.11.5.0/BIN-NSS.FW.12.0.r1-002-HK.R.tar.bz2
 endef
 
 define Build/Compile
@@ -48,21 +48,23 @@ define Build/Compile
 endef
 
 define Package/nss-firmware-ipq6018/install
-	$(TAR) -C $(PKG_BUILD_DIR) -xf $(NSS_ARCHIVE)
+	mkdir -p $(PKG_BUILD_DIR)/IPQ6018
+	$(TAR) -C $(PKG_BUILD_DIR)/IPQ6018 -xf $(NSS_ARCHIVE) --strip-components=1
 	$(INSTALL_DIR) $(1)/lib/firmware/
 	$(INSTALL_DATA) \
-		$(PKG_BUILD_DIR)/BIN-NSS.CP.11.3-9-R/retail_router0.bin \
+		$(PKG_BUILD_DIR)/IPQ6018/retail_router0.bin \
 		$(1)/lib/firmware/qca-nss0-retail.bin
 endef
 
 define Package/nss-firmware-ipq8074/install
-	$(TAR) -C $(PKG_BUILD_DIR) -xf $(NSS_ARCHIVE)
+	mkdir -p $(PKG_BUILD_DIR)/IPQ8074
+	$(TAR) -C $(PKG_BUILD_DIR)/IPQ8074 -xf $(NSS_ARCHIVE) --strip-components=1
 	$(INSTALL_DIR) $(1)/lib/firmware/
 	$(INSTALL_DATA) \
-		$(PKG_BUILD_DIR)/BIN-NSS.HK.11.3-9-R/retail_router0.bin \
+		$(PKG_BUILD_DIR)/IPQ8074/retail_router0.bin \
 		$(1)/lib/firmware/qca-nss0-retail.bin
 	$(INSTALL_DATA) \
-		$(PKG_BUILD_DIR)/BIN-NSS.HK.11.3-9-R/retail_router1.bin \
+		$(PKG_BUILD_DIR)/IPQ8074/retail_router1.bin \
 		$(1)/lib/firmware/qca-nss1-retail.bin
 endef
 
